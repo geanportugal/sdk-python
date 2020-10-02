@@ -35,7 +35,6 @@ setup(
     packages=["mercadopago"],
     url="https://github.com/mercadopago/sdk-python",
     description="Mercadopago SDK module for Payments integration",
-    long_description=open("README.rst").read(),
     install_requires="requests>=2.4.3",
     cmdclass={"test": Tests},
     classifiers=[
