@@ -39,12 +39,12 @@ class RestClient(object):
 
         return response
 
-    def post(self, uri, data=None, params=None, content_type=MIME_JSON):
+    def post(self, uri, data=None, params=None, device_id=None, content_type=MIME_JSON):
         if data is not None and content_type == self.MIME_JSON:
             data = JSONEncoder().encode(data)
 
         s = self.get_session()
-        api_result = s.post(self.__API_BASE_URL+uri, params=params, data=data, headers={'x-product-id': self.PRODUCT_ID, 'x-tracking-id': self.TRACKING_ID, 'User-Agent':self.USER_AGENT, 'Content-type':content_type, 'Accept':self.MIME_JSON})
+        api_result = s.post(self.__API_BASE_URL+uri, params=params, data=data, headers={'x-product-id': self.PRODUCT_ID, 'x-tracking-id': self.TRACKING_ID, 'User-Agent':self.USER_AGENT, 'Content-type':content_type, 'Accept':self.MIME_JSON, 'X-meli-session-id': device_id})
 
         response = {
             "status": api_result.status_code,
